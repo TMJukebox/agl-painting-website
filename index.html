@@ -4,370 +4,438 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AGL Painting LLC</title>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Serif+Display&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --navy:#1a4b7c;--navy-dark:#0e2f50;--navy-light:#2563a8;
-  --teal:#2bb5a0;--teal-dark:#1d8a7a;--teal-light:#e8f9f6;
-  --lime:#7ac143;--lime-dark:#5a9230;--lime-bg:#f0f9e8;
-  --white:#ffffff;--off:#f7f8fa;--stone:#f0f2f5;
-  --gray-100:#e4e7ec;--gray-300:#9ca8b4;--gray-500:#5a6677;--gray-700:#2d3a47;--gray-900:#131e29;
-  --font-display:'DM Serif Display',serif;
-  --font-body:'DM Sans',sans-serif;
+  --navy:#1B3A5A;
+  --teal:#2EB5A0;
+  --green:#5CB85C;
+  --white:#ffffff;
+  --light:#f8f9fa;
+  --text:#2d2d2d;
+  --muted:#666666;
 }
 html{scroll-behavior:smooth}
-body{font-family:var(--font-body);color:var(--gray-700);background:var(--white);overflow-x:hidden;line-height:1.6}
+body{font-family:'Inter',sans-serif;color:var(--text);background:var(--white);overflow-x:hidden;line-height:1.6}
 
 /* NAV */
-nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:var(--white);border-bottom:1px solid var(--gray-100);display:flex;align-items:center;justify-content:space-between;padding:0 6%;height:70px}
-.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none}
-.logo-agl{font-family:var(--font-display);font-size:26px;color:var(--navy-dark);letter-spacing:1px}
-.logo-agl span{color:var(--lime)}
-.logo-sep{width:1px;height:28px;background:var(--gray-100);margin:0 4px}
-.logo-sub{font-size:11px;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:var(--gray-300)}
-.nav-links{display:flex;align-items:center;gap:32px;list-style:none}
-.nav-links a{text-decoration:none;font-size:13px;font-weight:500;letter-spacing:0.5px;color:var(--gray-500);transition:color 0.15s}
-.nav-links a:hover{color:var(--navy)}
-.nav-cta{background:var(--navy);color:var(--white)!important;padding:10px 22px;border-radius:4px;font-weight:600!important;transition:background 0.15s!important}
-.nav-cta:hover{background:var(--navy-light)!important}
+nav{
+  position:fixed;top:18px;left:50%;transform:translateX(-50%);
+  z-index:1000;background:rgba(255,255,255,0.96);backdrop-filter:blur(12px);
+  border-radius:50px;padding:13px 36px;
+  display:flex;gap:36px;align-items:center;
+  box-shadow:0 4px 24px rgba(0,0,0,0.10);
+  white-space:nowrap;
+}
+nav a{
+  text-decoration:none;font-size:12px;font-weight:700;
+  letter-spacing:1.5px;color:var(--text);transition:color 0.2s;
+  text-transform:uppercase;
+}
+nav a:hover{color:var(--teal)}
 
-/* HERO */
-.hero{min-height:100vh;background:var(--off);display:flex;align-items:stretch;padding-top:70px}
-.hero-left{flex:1;display:flex;flex-direction:column;justify-content:center;padding:80px 6% 80px;max-width:52%}
-.hero-right{flex:1;background:var(--navy-dark);position:relative;overflow:hidden;min-height:500px}
-.hero-right-pattern{position:absolute;inset:0;background-image:repeating-linear-gradient(0deg,rgba(255,255,255,0.03) 0px,rgba(255,255,255,0.03) 1px,transparent 1px,transparent 48px),repeating-linear-gradient(90deg,rgba(255,255,255,0.03) 0px,rgba(255,255,255,0.03) 1px,transparent 1px,transparent 48px)}
-.hero-right-bar{position:absolute;top:0;left:0;bottom:0;width:4px;background:linear-gradient(to bottom,var(--teal),var(--lime))}
-.hero-right-content{position:relative;z-index:2;padding:64px 48px;height:100%;display:flex;flex-direction:column;justify-content:flex-end}
-.hero-stat-block{margin-bottom:28px}
-.hero-big-num{font-family:var(--font-display);font-size:72px;color:var(--white);line-height:1;margin-bottom:4px}
-.hero-big-label{font-size:13px;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.4)}
-.hero-stat-row{display:flex;gap:32px;margin-top:40px;padding-top:28px;border-top:1px solid rgba(255,255,255,0.1)}
-.hsr-item{display:flex;flex-direction:column;gap:4px}
-.hsr-num{font-family:var(--font-display);font-size:28px;color:var(--lime)}
-.hsr-label{font-size:11px;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.35)}
-.hero-eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--teal-dark);margin-bottom:20px}
-.hero-eyebrow::before{content:'';display:block;width:20px;height:1.5px;background:var(--teal)}
-.hero h1{font-family:var(--font-display);font-size:clamp(44px,5.5vw,68px);line-height:1.05;color:var(--navy-dark);margin-bottom:24px}
-.hero h1 em{font-style:italic;color:var(--teal-dark)}
-.hero-body{font-size:17px;font-weight:300;color:var(--gray-500);line-height:1.8;max-width:440px;margin-bottom:36px}
-.hero-ctas{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:44px}
-.btn-pri{font-size:13px;font-weight:600;letter-spacing:1px;text-transform:uppercase;text-decoration:none;padding:14px 30px;background:var(--navy);color:var(--white);border-radius:4px;transition:background 0.15s;display:inline-block}
-.btn-pri:hover{background:var(--navy-light)}
-.btn-sec{font-size:13px;font-weight:600;letter-spacing:1px;text-transform:uppercase;text-decoration:none;padding:14px 30px;background:transparent;color:var(--navy);border:1.5px solid var(--navy);border-radius:4px;transition:all 0.15s;display:inline-block}
-.btn-sec:hover{background:var(--navy);color:var(--white)}
-.hero-phone-row{display:flex;align-items:center;gap:10px;padding:14px 18px;background:var(--white);border:1px solid var(--gray-100);border-radius:6px;width:fit-content}
-.hero-phone-icon{width:34px;height:34px;background:var(--teal-light);border-radius:50%;display:flex;align-items:center;justify-content:center}
-.hero-phone-label{font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--gray-300);margin-bottom:2px}
-.hero-phone-num{font-family:var(--font-display);font-size:20px;color:var(--navy-dark);text-decoration:none}
+/* HOME */
+#home{min-height:100vh;display:grid;grid-template-columns:1fr 1fr}
+.home-left{
+  display:flex;flex-direction:column;justify-content:center;
+  padding:120px 64px 80px;
+}
+.home-logo{width:260px;margin-bottom:36px;object-fit:contain}
+.home-desc{
+  font-size:15px;color:var(--muted);line-height:1.85;
+  max-width:460px;margin-bottom:32px;font-weight:400;
+}
+.home-contact{margin-bottom:32px}
+.home-contact p{font-size:14px;color:var(--text);margin-bottom:5px}
+.home-contact a{color:var(--navy);text-decoration:none;font-weight:600}
+.home-contact a:hover{text-decoration:underline}
+.cta-btn{
+  background:var(--navy);color:#fff;
+  padding:15px 30px;border-radius:6px;
+  font-size:12px;font-weight:800;letter-spacing:2px;
+  text-transform:uppercase;text-decoration:none;
+  display:inline-block;transition:background 0.2s;
+}
+.cta-btn:hover{background:var(--teal)}
+.home-right{position:relative;overflow:hidden;min-height:500px}
+.home-right img{width:100%;height:100%;object-fit:cover}
+
+/* DIVIDER */
+.section-label{
+  font-size:11px;font-weight:700;letter-spacing:3px;
+  text-transform:uppercase;color:var(--teal);
+  display:flex;align-items:center;gap:10px;margin-bottom:14px;
+}
+.section-label::before{content:'';display:block;width:28px;height:2px;background:var(--teal)}
+.section-title{
+  font-size:clamp(36px,4.5vw,56px);font-weight:800;
+  letter-spacing:2px;text-transform:uppercase;
+  color:var(--text);margin-bottom:24px;line-height:1.05;
+}
 
 /* SERVICES */
-section{padding:88px 6%}
-.section-eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--teal-dark);margin-bottom:14px}
-.section-eyebrow::before{content:'';display:block;width:20px;height:1.5px;background:var(--teal)}
-h2.sh{font-family:var(--font-display);font-size:clamp(34px,4vw,50px);line-height:1.05;color:var(--navy-dark);margin-bottom:14px}
-h2.sh em{font-style:italic;color:var(--teal-dark)}
-.section-lead{font-size:16px;font-weight:300;color:var(--gray-500);line-height:1.8;max-width:500px}
+#services{display:grid;grid-template-columns:1fr 1fr;min-height:90vh}
+.services-img{position:relative;overflow:hidden;min-height:400px}
+.services-img img{width:100%;height:100%;object-fit:cover}
+.services-content{padding:80px 64px;overflow-y:auto;background:var(--white)}
+.services-intro{
+  font-size:14px;color:var(--muted);line-height:1.85;
+  margin-bottom:44px;max-width:480px;
+}
+.service-item{margin-bottom:30px;padding-bottom:30px;border-bottom:1px solid #eee}
+.service-item:last-child{border-bottom:none}
+.service-name{
+  font-size:11px;font-weight:800;letter-spacing:2px;
+  text-transform:uppercase;color:var(--navy);
+  margin-bottom:8px;
+}
+.service-desc{font-size:14px;color:var(--muted);line-height:1.75}
 
-.services-bg{background:var(--stone)}
-.svc-inner{max-width:1160px;margin:0 auto}
-.svc-header{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:24px;margin-bottom:52px}
-.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--gray-100);border:1px solid var(--gray-100);border-radius:8px;overflow:hidden}
-.svc-card{background:var(--white);padding:36px 30px;transition:background 0.15s}
-.svc-card:hover{background:var(--teal-light)}
-.svc-card:hover .svc-name{color:var(--teal-dark)}
-.svc-tag{display:inline-block;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:3px 8px;background:var(--lime-bg);color:var(--lime-dark);border-radius:3px;margin-bottom:16px}
-.svc-ico{font-size:24px;margin-bottom:14px}
-.svc-name{font-family:var(--font-display);font-size:22px;color:var(--navy-dark);margin-bottom:10px;transition:color 0.15s}
-.svc-desc{font-size:14px;color:var(--gray-500);line-height:1.7}
+/* COMPLETED JOBS */
+#jobs{padding:88px 64px;background:var(--light)}
+.jobs-inner{max-width:1160px;margin:0 auto}
+.jobs-header{margin-bottom:52px}
+.jobs-grid{
+  display:grid;grid-template-columns:2fr 1fr 1fr;
+  gap:48px;margin-bottom:44px;
+}
+.jobs-col h3{
+  font-size:11px;font-weight:800;letter-spacing:2px;
+  text-transform:uppercase;color:var(--navy);
+  margin-bottom:16px;padding-bottom:10px;
+  border-bottom:2px solid var(--teal);
+}
+.jobs-col ul{list-style:none}
+.jobs-col ul li{
+  font-size:14px;color:var(--text);
+  padding:6px 0;border-bottom:1px solid rgba(0,0,0,0.06);
+}
+.cert-bar{
+  margin:40px 0;padding:18px 28px;
+  background:var(--navy);border-radius:8px;
+  color:white;font-size:12px;font-weight:700;
+  letter-spacing:3px;text-transform:uppercase;
+}
+.photo-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:6px;margin-top:44px;
+}
+.photo-grid img{
+  width:100%;aspect-ratio:4/3;
+  object-fit:cover;border-radius:4px;
+  transition:opacity 0.2s;cursor:pointer;
+}
+.photo-grid img:hover{opacity:0.88}
+.photo-grid .span2{grid-column:span 2;aspect-ratio:16/9}
+.photo-grid .tall{grid-row:span 2;aspect-ratio:auto}
 
-/* ABOUT */
-.about-inner{max-width:1160px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
-.about-visual{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:auto auto;gap:12px}
-.av-main{grid-column:1/-1;background:var(--navy-dark);height:240px;border-radius:6px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
-.av-main-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(14,47,80,0.85) 0%,transparent 60%)}
-.av-main-label{position:absolute;bottom:18px;left:20px;font-family:var(--font-display);font-size:14px;color:rgba(255,255,255,0.7)}
-.av-watermark{position:absolute;font-family:var(--font-display);font-size:60px;font-weight:400;color:rgba(255,255,255,0.06);letter-spacing:8px}
-.av-sub{background:var(--stone);border-radius:6px;height:120px;display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-end;padding:16px 18px;border:1px solid var(--gray-100)}
-.av-sub-num{font-family:var(--font-display);font-size:36px;color:var(--lime-dark);line-height:1}
-.av-sub-label{font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--gray-300)}
-.av-accent{background:var(--navy);border-radius:6px;height:120px;display:flex;align-items:center;justify-content:center}
-.av-accent-text{font-family:var(--font-display);font-size:14px;color:rgba(255,255,255,0.5);letter-spacing:3px;text-transform:uppercase;text-align:center;line-height:1.4}
-.about-pts{margin-top:28px;display:flex;flex-direction:column;gap:16px}
-.about-pt{display:flex;gap:14px;align-items:flex-start}
-.apt-line{width:2px;height:100%;min-height:42px;background:linear-gradient(to bottom,var(--teal),transparent);flex-shrink:0;margin-top:4px}
-.apt-text strong{display:block;font-size:14px;font-weight:600;color:var(--navy-dark);margin-bottom:3px}
-.apt-text span{font-size:14px;color:var(--gray-500);line-height:1.6}
-
-/* CLIENTS */
-.clients-strip{background:var(--white);padding:40px 6%;border-top:1px solid var(--gray-100);border-bottom:1px solid var(--gray-100);overflow:hidden}
-.clients-label{text-align:center;font-size:11px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--gray-300);margin-bottom:28px}
-.ticker-wrap{overflow:hidden;position:relative}
-.ticker-wrap::before,.ticker-wrap::after{content:'';position:absolute;top:0;bottom:0;width:60px;z-index:1}
-.ticker-wrap::before{left:0;background:linear-gradient(90deg,var(--white),transparent)}
-.ticker-wrap::after{right:0;background:linear-gradient(-90deg,var(--white),transparent)}
-.ticker{display:flex;gap:32px;animation:tick 28s linear infinite;width:max-content}
-@keyframes tick{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
-.c-chip{border:1px solid var(--gray-100);border-radius:4px;padding:8px 18px;font-size:12px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--navy);white-space:nowrap;background:var(--off)}
-
-/* PROCESS */
-.process-bg{background:var(--navy-dark)}
-.process-inner{max-width:1160px;margin:0 auto}
-.process-head{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start;margin-bottom:56px}
-.process-head h2.sh,.process-head .section-eyebrow{color:var(--white)}
-.process-head h2.sh em{color:var(--teal-light)}
-.process-head .section-eyebrow{color:rgba(255,255,255,0.5)}
-.process-head .section-eyebrow::before{background:rgba(255,255,255,0.3)}
-.process-head .section-lead{color:rgba(255,255,255,0.45)}
-.proc-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;position:relative}
-.proc-steps::after{content:'';position:absolute;top:28px;left:14%;right:14%;height:1px;background:rgba(255,255,255,0.1)}
-.proc-step{text-align:center;padding:0 12px;position:relative;z-index:1}
-.proc-circle{width:56px;height:56px;border-radius:50%;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.15);display:flex;align-items:center;justify-content:center;margin:0 auto 20px;font-family:var(--font-display);font-size:22px;color:var(--white)}
-.proc-step:last-child .proc-circle{background:rgba(122,193,67,0.15);border-color:var(--lime);color:var(--lime)}
-.proc-title{font-family:var(--font-display);font-size:18px;color:var(--white);margin-bottom:8px}
-.proc-desc{font-size:13px;color:rgba(255,255,255,0.4);line-height:1.6}
-
-/* SECTORS */
-.sectors-inner{max-width:1160px;margin:0 auto}
-.sectors-header{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:end;margin-bottom:44px}
-.sec-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-.sec-card{background:var(--stone);border:1px solid var(--gray-100);border-radius:6px;padding:22px 20px;display:flex;align-items:flex-start;gap:14px;transition:border-color 0.15s,background 0.15s}
-.sec-card:hover{border-color:var(--teal);background:var(--teal-light)}
-.sec-ico{width:40px;height:40px;background:var(--white);border:1px solid var(--gray-100);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
-.sec-name{font-size:14px;font-weight:600;color:var(--navy-dark);margin-bottom:4px}
-.sec-detail{font-size:12px;color:var(--gray-500);line-height:1.5}
-
-/* QUOTE */
-.quote-bg{background:var(--off)}
-.quote-inner{max-width:1160px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:start}
-.q-contacts{margin-top:28px;display:flex;flex-direction:column;gap:12px}
-.q-row{display:flex;gap:8px;font-size:15px;align-items:baseline}
-.q-row strong{font-size:12px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--gray-300);min-width:120px}
-.q-row a{color:var(--teal-dark);text-decoration:none}
-.q-row a:hover{text-decoration:underline}
-.form-box{background:var(--white);border:1px solid var(--gray-100);border-radius:8px;padding:36px}
-.form-title-block{font-family:var(--font-display);font-size:24px;color:var(--navy-dark);margin-bottom:24px}
-.fl{display:flex;flex-direction:column;gap:6px;margin-bottom:14px}
-.fl label{font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--gray-300)}
-.fl input,.fl select,.fl textarea{border:1px solid var(--gray-100);border-radius:4px;padding:11px 14px;font-family:var(--font-body);font-size:14px;color:var(--gray-700);background:var(--off);outline:none;transition:border-color 0.15s;width:100%}
-.fl input:focus,.fl select:focus,.fl textarea:focus{border-color:var(--teal);background:var(--white)}
-.fl textarea{resize:vertical;min-height:80px}
-.fr{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.fsub{width:100%;background:var(--navy);color:var(--white);border:none;padding:14px;font-family:var(--font-body);font-size:13px;font-weight:600;letter-spacing:1px;text-transform:uppercase;border-radius:4px;cursor:pointer;transition:background 0.15s;margin-top:6px}
-.fsub:hover{background:var(--navy-light)}
+/* OUR TEAM */
+#team{padding:88px 0 0}
+.team-header{text-align:center;padding:0 64px 64px}
+.team-cards{
+  display:grid;grid-template-columns:repeat(2,1fr);
+}
+.team-member{
+  display:grid;grid-template-columns:1fr 1fr;
+  min-height:420px;
+}
+.team-member:nth-child(even) .member-img{order:2}
+.team-member:nth-child(even) .member-info{order:1}
+.member-img{overflow:hidden;background:var(--light)}
+.member-img img{width:100%;height:100%;object-fit:cover}
+.member-img-placeholder{
+  width:100%;height:100%;min-height:300px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:72px;font-weight:800;color:rgba(255,255,255,0.15);
+}
+.member-info{
+  display:flex;flex-direction:column;justify-content:center;
+  padding:48px;background:var(--white);
+}
+.member-name{
+  font-size:17px;font-weight:800;letter-spacing:1px;
+  text-transform:uppercase;color:var(--text);margin-bottom:6px;
+}
+.member-title{
+  font-size:11px;font-weight:700;color:var(--teal);
+  text-transform:uppercase;letter-spacing:2px;margin-bottom:18px;
+}
+.member-bio{font-size:14px;color:var(--muted);line-height:1.75;margin-bottom:18px}
+.member-email{font-size:13px;color:var(--navy);text-decoration:none;font-weight:600}
+.member-email:hover{text-decoration:underline}
 
 /* FOOTER */
-footer{background:var(--gray-900);padding:52px 6% 28px}
-.foot-inner{max-width:1160px;margin:0 auto}
-.foot-top{display:grid;grid-template-columns:2fr 1fr 1fr 1.4fr;gap:44px;margin-bottom:44px}
-.foot-brand-name{font-family:var(--font-display);font-size:24px;color:var(--white);margin-bottom:8px}
-.foot-brand-name span{color:var(--lime)}
-.foot-tagline{font-size:13px;color:rgba(255,255,255,0.35);line-height:1.7;max-width:260px;margin-bottom:16px}
-.foot-addr{font-size:13px;color:rgba(255,255,255,0.25)}
-.foot-col-ttl{font-size:11px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-bottom:16px}
-.foot-links{list-style:none;display:flex;flex-direction:column;gap:8px}
-.foot-links a{text-decoration:none;font-size:14px;color:rgba(255,255,255,0.4);transition:color 0.15s}
-.foot-links a:hover{color:var(--teal-light)}
-.fci{display:flex;flex-direction:column;gap:2px;margin-bottom:12px}
-.fci-l{font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,0.25)}
-.fci-v{font-size:13px;color:rgba(255,255,255,0.5)}
-.fci-v a{color:rgba(43,181,160,0.8);text-decoration:none}
-hr.fd{border:none;border-top:1px solid rgba(255,255,255,0.07);margin-bottom:20px}
-.foot-bottom{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px}
-.foot-copy{font-size:12px;color:rgba(255,255,255,0.2)}
-@media(max-width:900px){
-  .hero{flex-direction:column}
-  .hero-left{max-width:100%;padding:60px 6% 40px}
-  .hero-right{min-height:300px}
-  .svc-grid,.sec-grid,.about-inner,.process-head,.sectors-header,.quote-inner,.foot-top{grid-template-columns:1fr}
-  .proc-steps{grid-template-columns:repeat(2,1fr);gap:28px}
-  .proc-steps::after{display:none}
-  .av-main{height:180px}
-  .fr{grid-template-columns:1fr}
+footer{background:var(--navy);padding:48px 64px 32px}
+.foot-inner{max-width:1160px;margin:0 auto;text-align:center}
+.foot-links{display:flex;justify-content:center;gap:36px;list-style:none;flex-wrap:wrap;margin-bottom:28px}
+.foot-links a{
+  text-decoration:none;font-size:12px;font-weight:700;
+  letter-spacing:2px;color:rgba(255,255,255,0.6);
+  transition:color 0.2s;text-transform:uppercase;
+}
+.foot-links a:hover{color:var(--teal)}
+hr.fd{border:none;border-top:1px solid rgba(255,255,255,0.08);margin-bottom:20px}
+.foot-copy{font-size:12px;color:rgba(255,255,255,0.25);line-height:1.8}
+
+/* RESPONSIVE */
+@media(max-width:960px){
+  nav{gap:20px;padding:11px 22px}
+  nav a{font-size:11px;letter-spacing:1px}
+  #home,#services{grid-template-columns:1fr}
+  .home-right{min-height:320px}
+  .services-img{min-height:280px}
+  .home-left,.services-content{padding:100px 32px 60px}
+  #jobs{padding:64px 32px}
+  .jobs-grid{grid-template-columns:1fr}
+  .photo-grid{grid-template-columns:repeat(2,1fr)}
+  .photo-grid .span2,.photo-grid .tall{grid-column:span 1;grid-row:span 1;aspect-ratio:4/3}
+  .team-cards{grid-template-columns:1fr}
+  .team-member{grid-template-columns:1fr;min-height:auto}
+  .team-member:nth-child(even) .member-img,.team-member:nth-child(even) .member-info{order:unset}
+  .member-img{min-height:260px}
+  .member-info{padding:36px 32px}
+  #team{padding:64px 0 0}
+  .team-header{padding:0 32px 40px}
+  footer{padding:40px 32px 24px}
 }
 </style>
 </head>
 <body>
 
+<!-- NAV -->
 <nav>
-  <a href="#" class="nav-logo">
-    <span class="logo-agl">AGL<span>.</span></span>
-    <div class="logo-sep"></div>
-    <span class="logo-sub">Painting LLC</span>
-  </a>
-  <ul class="nav-links">
-    <li><a href="#about">About</a></li>
-    <li><a href="#services">Services</a></li>
-    <li><a href="#sectors">Markets</a></li>
-    <li><a href="#process">Process</a></li>
-    <li><a href="#quote" class="nav-cta">Free Quote</a></li>
-  </ul>
+  <a href="#home">Home Page</a>
+  <a href="#services">Services</a>
+  <a href="#jobs">Completed Jobs</a>
+  <a href="#team">Our Team</a>
 </nav>
 
-<div class="hero">
-  <div class="hero-left">
-    <div class="hero-eyebrow">San Antonio, TX · Commercial & Industrial</div>
-    <h1>Painting that <em>works</em> as hard as you do.</h1>
-    <p class="hero-body">Full-service commercial and industrial painting contractor. Over 20 years delivering exceptional results — on schedule, within budget, with zero compromises on quality.</p>
-    <div class="hero-ctas">
-      <a href="#quote" class="btn-pri">Get a free estimate</a>
-      <a href="#services" class="btn-sec">Our services</a>
+<!-- HOME PAGE -->
+<section id="home">
+  <div class="home-left">
+    <img src="Images/AGL LOGO 1.png" alt="AGL Painting LLC" class="home-logo">
+    <p class="home-desc">We are a trusted full-service commercial/industrial painting contractor dedicated to delivering exceptional results for all your interior and exterior painting requirements. With attention to detail from prep work to trim finishing, our experienced professionals ensure your project is completed efficiently, on schedule, and within your budget. With over 20 years of experience, our reputation is built on the satisfaction of our valued clients. Trust AGL Painting, LLC for unparalleled service and outstanding results.</p>
+    <div class="home-contact">
+      <p><strong>AGL Painting, LLC.</strong></p>
+      <p>5515 Fredericksburg Rd</p>
+      <p>San Antonio, TX 78229</p>
+      <p>Office: <a href="tel:2102274200">(210) 227-4200</a></p>
+      <p>Fax: (210) 227-4206</p>
     </div>
-    <div class="hero-phone-row">
-      <div class="hero-phone-icon">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1d8a7a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8 19.79 19.79 0 01.18 2.18a2 2 0 012-2.18h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.18 6.18l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14.92z"/></svg>
-      </div>
-      <div>
-        <div class="hero-phone-label">Call for a quote</div>
-        <a href="tel:2102274200" class="hero-phone-num">(210) 227-4200</a>
-      </div>
-    </div>
+    <a href="tel:2102274200" class="cta-btn">Call Today for a Free Estimate!</a>
   </div>
-</div>
-
-<!-- CLIENTS STRIP -->
-<div class="clients-strip">
-  <div class="clients-label">Trusted by San Antonio's most recognized names</div>
-  <div class="ticker-wrap">
-    <div class="ticker" id="ticker1"></div>
+  <div class="home-right">
+    <img src="Images/agl-1.jpg" alt="AGL Painting — San Antonio">
   </div>
-</div>
+</section>
 
 <!-- SERVICES -->
-<section class="services-bg" id="services">
-  <div class="svc-inner">
-    <div class="svc-header">
-      <div>
-        <div class="section-eyebrow">What we do</div>
-        <h2 class="sh">Full-service <em>capabilities</em></h2>
-      </div>
-      <a href="#quote" class="btn-pri">Get a quote</a>
+<section id="services">
+  <div class="services-img">
+    <img src="Images/agl-projects-2.jpg" alt="AGL Painting crew at work">
+  </div>
+  <div class="services-content">
+    <div class="section-label">What We Do</div>
+    <h2 class="section-title">Services</h2>
+    <p class="services-intro">Discover a comprehensive suite of services at AGL Painting LLC, your trusted partner for all your painting and construction needs, including interior and exterior painting, drywall, tape and float, texture, expert color matching, faux finish, custom texture, metal stud framing, acoustical ceilings, demolition, sandblasting, and pressure washing, ensuring exceptional results for every project.</p>
+
+    <div class="service-item">
+      <div class="service-name">Roof Coating System</div>
+      <p class="service-desc">A cost-effective alternative to roof replacement with our Seamless Roof Coating System. This fluid-applied solution forms a durable, waterproof barrier that helps extend the life of your existing roof while saving you money. With experienced professionals, superior workmanship, and full licensing, AGL Painting delivers reliable protection and long-lasting results.</p>
     </div>
-    <div class="svc-grid">
-      <div class="svc-card"><div class="svc-ico">🖌️</div><div class="svc-name">Interior & Exterior Painting</div><p class="svc-desc">Commercial-grade coatings applied with precision prep, priming, and finishing across walls, ceilings, and facades.</p></div>
-      <div class="svc-card"><div class="svc-tag">New</div><div class="svc-ico">🏗️</div><div class="svc-name">Epoxy Floor Coating</div><p class="svc-desc">Industrial-strength systems for warehouses, garages, and high-traffic commercial floors with lasting durability.</p></div>
-      <div class="svc-card"><div class="svc-tag">New</div><div class="svc-ico">🏠</div><div class="svc-name">Seamless Roof Coating</div><p class="svc-desc">Reflective seamless roof systems protecting against leaks, UV, and extreme weather — extending roof life significantly.</p></div>
-      <div class="svc-card"><div class="svc-ico">🎨</div><div class="svc-name">Custom Texture & Faux Finish</div><p class="svc-desc">Expert color matching, custom texture applications, and decorative faux finishes for premium interiors.</p></div>
-      <div class="svc-card"><div class="svc-ico">⚡</div><div class="svc-name">Pressure Washing & Sandblasting</div><p class="svc-desc">Industrial surface prep ensuring maximum coating adhesion and longevity on any substrate.</p></div>
-      <div class="svc-card"><div class="svc-ico">🔧</div><div class="svc-name">Drywall & Metal Framing</div><p class="svc-desc">Demolition, metal stud framing, drywall installation, and acoustical ceilings — full scope beyond just paint.</p></div>
+
+    <div class="service-item">
+      <div class="service-name">Epoxy Floor Coating</div>
+      <p class="service-desc">Our epoxy floor coatings offer long lasting protection, a beautiful appearance, and easy maintenance. Whether for residential or commercial use, our epoxy coatings deliver both style and strength.</p>
+    </div>
+
+    <div class="service-item">
+      <div class="service-name">Interior &amp; Exterior Painting</div>
+      <p class="service-desc">Transform your space with our comprehensive Interior &amp; Exterior painting services, bringing vibrant colors and flawless finishes to every surface.</p>
+    </div>
+
+    <div class="service-item">
+      <div class="service-name">Demolition, Metal Stud Framing &amp; Drywall</div>
+      <p class="service-desc">Experience unparalleled craftsmanship with our Drywall, Tape &amp; Float, Texture services. Our skilled professionals excel in creating seamless surfaces, from precision taping and floating to adding custom textures that breathe life into your spaces. Whether it's a Level 5 finish or intricate texturing, we deliver results that exceed expectations, ensuring a flawless foundation for the perfect paint job.</p>
+    </div>
+
+    <div class="service-item">
+      <div class="service-name">Sandblasting &amp; Pressure Washing</div>
+      <p class="service-desc">Industrial surface preparation using sandblasting and pressure washing to ensure maximum coating adhesion, cleanliness, and longevity on any substrate — with meticulous attention to detail.</p>
+    </div>
+
+    <div class="service-item">
+      <div class="service-name">Faux Finish</div>
+      <p class="service-desc">Elevate your space with the artistry of Faux Finish, where our skilled touch brings captivating textures and visual depth to your walls.</p>
+    </div>
+
+    <div class="service-item">
+      <div class="service-name">Custom Texture</div>
+      <p class="service-desc">Experience the touch of innovation through our Custom Texture service, where we transform ordinary surfaces into captivating expressions of style and uniqueness.</p>
+    </div>
+
+    <div class="service-item">
+      <div class="service-name">Acoustical Ceilings</div>
+      <p class="service-desc">Elevate both aesthetics and acoustics with our Acoustical Ceilings service, where form and function harmonize to create a truly immersive environment.</p>
     </div>
   </div>
 </section>
 
-<!-- ABOUT -->
-<section id="about">
-  <div class="about-inner" style="max-width:1160px;margin:0 auto">
-    <div class="about-visual">
-      <div class="av-main">
-        <div class="av-watermark">AGL</div>
-        <div class="av-main-overlay"></div>
-        <div class="av-main-label">HEB Warehouse · San Antonio, TX</div>
-      </div>
-      <div class="av-sub"><div class="av-sub-num">20+</div><div class="av-sub-label">Years established</div></div>
-      <div class="av-accent"><div class="av-accent-text">Licensed<br>&amp;<br>Insured</div></div>
+<!-- COMPLETED JOBS -->
+<section id="jobs">
+  <div class="jobs-inner">
+    <div class="jobs-header">
+      <div class="section-label">Our Track Record</div>
+      <h2 class="section-title">Completed Jobs</h2>
     </div>
-    <div>
-      <div class="section-eyebrow">Who we are</div>
-      <h2 class="sh">Trusted contractor. <em>Proven results.</em></h2>
-      <p class="section-lead">A full-service commercial and industrial painting contractor dedicated to exceptional results on projects of every scale across San Antonio and beyond.</p>
-      <div class="about-pts">
-        <div class="about-pt"><div class="apt-line"></div><div class="apt-text"><strong>Meticulous preparation</strong><span>Every project starts with thorough surface prep — the foundation of any lasting finish.</span></div></div>
-        <div class="about-pt"><div class="apt-line"></div><div class="apt-text"><strong>Deep client roster</strong><span>HEB, SeaWorld, Fiesta Texas, SAPD, UT Austin, Texas A&M, and dozens more.</span></div></div>
-        <div class="about-pt"><div class="apt-line"></div><div class="apt-text"><strong>Military-cleared crews</strong><span>Experienced at Ft. Sam, LAFB, Camp Bullis, Medina Base, Port San Antonio, and RAFB.</span></div></div>
-        <div class="about-pt"><div class="apt-line"></div><div class="apt-text"><strong>Major GC partnerships</strong><span>JE Dunn, Vaughn Construction, Dennis Group, and the City of San Antonio rely on us.</span></div></div>
+
+    <div class="jobs-grid">
+      <div class="jobs-col">
+        <h3>Completed Projects</h3>
+        <ul>
+          <li>Alamodome</li>
+          <li>Alamo Community Colleges</li>
+          <li>Arneson River Theatre</li>
+          <li>Bexar County Court House</li>
+          <li>Buddy's Home Furnishings</li>
+          <li>Chama Gaúcha</li>
+          <li>City of San Antonio</li>
+          <li>HEB Arsenal</li>
+          <li>HEB Stores / Warehouses</li>
+          <li>Henry B. Gonzales Convention Center</li>
+          <li>La Cantera</li>
+          <li>Landa Library</li>
+          <li>Medpost Urgent Care</li>
+          <li>Riverside ER</li>
+          <li>San Antonio Library</li>
+          <li>Seaworld</li>
+          <li>Six Flags Fiesta Texas</li>
+          <li>Texas A&amp;M</li>
+          <li>Texas State University in San Marcos</li>
+          <li>Texas Theatre</li>
+          <li>The University of Texas at Austin</li>
+          <li>The University of Texas at San Antonio</li>
+          <li>Valero Corner Stores</li>
+          <li>Woodlawn Baptist Church</li>
+        </ul>
       </div>
+
+      <div class="jobs-col">
+        <h3>Area Bases</h3>
+        <ul>
+          <li>Camp Bullis</li>
+          <li>Fort Sam</li>
+          <li>LAFB</li>
+          <li>Medina Base</li>
+          <li>Port San Antonio</li>
+          <li>RAFB</li>
+        </ul>
+      </div>
+
+      <div class="jobs-col">
+        <h3>Various Projects With</h3>
+        <ul>
+          <li>Belt Built Contracting, LLC.</li>
+          <li>Cofield Group</li>
+          <li>Con-Cor Inc.</li>
+          <li>Dennis Group</li>
+          <li>F.A. Nunnelly</li>
+          <li>Jamail &amp; Smith Construction</li>
+          <li>JE Dunn</li>
+          <li>The City of San Antonio</li>
+          <li>Vaughn Construction</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="cert-bar">Certified: HUB &nbsp;·&nbsp; SBE &nbsp;·&nbsp; MBE &nbsp;·&nbsp; HABE &nbsp;·&nbsp; ESBE</div>
+
+    <div class="photo-grid">
+      <img src="Images/Chama.jpg" alt="Chama Gaucha" class="span2 tall">
+      <img src="Images/20241007_135740.jpg" alt="AGL Project">
+      <img src="Images/20241010_092550.jpg" alt="AGL Project">
+      <img src="Images/HEB 2.jpg" alt="HEB Project" class="span2">
+      <img src="Images/20241011_224920.jpg" alt="AGL Project">
+      <img src="Images/20241023_115720.jpg" alt="AGL Project">
+      <img src="Images/agl-projects-5.jpg" alt="AGL Project">
+      <img src="Images/20250224_095144.jpg" alt="AGL Project">
+      <img src="Images/20241012_002633.jpg" alt="AGL Project">
+      <img src="Images/20241023_115728.jpg" alt="AGL Project">
     </div>
   </div>
 </section>
 
-<!-- PROCESS -->
-<section class="process-bg" id="process">
-  <div class="process-inner">
-    <div class="process-head">
-      <div>
-        <div class="section-eyebrow">How we work</div>
-        <h2 class="sh">Our <em>process</em></h2>
-      </div>
-      <p class="section-lead">Complete transparency and accountability at every stage — from first call to final sign-off.</p>
+<!-- OUR TEAM -->
+<section id="team">
+  <div class="team-header">
+    <div class="section-label">The People Behind the Work</div>
+    <h2 class="section-title">Our Team</h2>
+  </div>
+
+  <div class="team-member">
+    <div class="member-img" style="background:linear-gradient(135deg,var(--navy) 0%,#2a5a8a 100%)">
+      <div class="member-img-placeholder">MA</div>
     </div>
-    <div class="proc-steps">
-      <div class="proc-step"><div class="proc-circle">01</div><div class="proc-title">Consultation</div><p class="proc-desc">On-site evaluation and tailored project plan developed with your team.</p></div>
-      <div class="proc-step"><div class="proc-circle">02</div><div class="proc-title">Estimate</div><p class="proc-desc">Detailed, transparent quote with material specs, timeline, and crew requirements.</p></div>
-      <div class="proc-step"><div class="proc-circle">03</div><div class="proc-title">Execution</div><p class="proc-desc">Skilled crews with meticulous prep, expert application, and daily cleanliness.</p></div>
-      <div class="proc-step"><div class="proc-circle">04</div><div class="proc-title">Sign-Off</div><p class="proc-desc">Full walkthrough inspection — we don't leave until you're completely satisfied.</p></div>
+    <div class="member-info">
+      <div class="member-name">Miguel A. Aguilar</div>
+      <div class="member-title">Senior Executive Project Manager</div>
+      <p class="member-bio">Holds an associate's degree in Construction from San Antonio College and has over 40+ years of experience.</p>
+      <a href="mailto:Miguel@aglpainting.com" class="member-email">Miguel@aglpainting.com</a>
+    </div>
+  </div>
+
+  <div class="team-member">
+    <div class="member-info">
+      <div class="member-name">Melissa Peña Perez</div>
+      <div class="member-title">Office Manager</div>
+      <p class="member-bio">Manages daily office operations, scheduling, and communication, ensuring smooth workflow.</p>
+      <a href="mailto:Melissa@aglpainting.com" class="member-email">Melissa@aglpainting.com</a>
+    </div>
+    <div class="member-img" style="background:linear-gradient(135deg,var(--teal) 0%,#1d8a7a 100%)">
+      <div class="member-img-placeholder">MP</div>
+    </div>
+  </div>
+
+  <div class="team-member">
+    <div class="member-img" style="background:linear-gradient(135deg,var(--green) 0%,#3a8a3a 100%)">
+      <div class="member-img-placeholder">LA</div>
+    </div>
+    <div class="member-info">
+      <div class="member-name">Leanna Aguilar</div>
+      <div class="member-title">Estimator</div>
+      <p class="member-bio">Holds an associate's of Arts and Business Administration and supports project estimating and daily operations.</p>
+      <a href="mailto:Leanna@aglpainting.com" class="member-email">Leanna@aglpainting.com</a>
+    </div>
+  </div>
+
+  <div class="team-member">
+    <div class="member-info">
+      <div class="member-name">Monica Landin</div>
+      <div class="member-title">Business Development</div>
+      <p class="member-bio">Leads client outreach, builds partnerships and creates growth opportunities for AGL Painting LLC.</p>
+      <a href="mailto:Monica@aglpainting.com" class="member-email">Monica@aglpainting.com</a>
+    </div>
+    <div class="member-img" style="background:linear-gradient(135deg,#4a6a8a 0%,var(--navy) 100%)">
+      <div class="member-img-placeholder">ML</div>
     </div>
   </div>
 </section>
 
-<!-- SECTORS -->
-<section id="sectors">
-  <div class="sectors-inner">
-    <div class="sectors-header">
-      <div><div class="section-eyebrow">Markets served</div><h2 class="sh">Built for every <em>sector</em></h2></div>
-      <p class="section-lead">From retail to military, healthcare to heavy industry — we bring commercial-grade expertise to every environment.</p>
-    </div>
-    <div class="sec-grid">
-      <div class="sec-card"><div class="sec-ico">🏢</div><div><div class="sec-name">Office & Retail</div><div class="sec-detail">HEB, 7-Eleven, Sears, La Cantera, Buddy's</div></div></div>
-      <div class="sec-card"><div class="sec-ico">🏥</div><div><div class="sec-name">Healthcare</div><div class="sec-detail">MedPost Urgent Care, Riverside ER, Aetna</div></div></div>
-      <div class="sec-card"><div class="sec-ico">🎓</div><div><div class="sec-name">Education</div><div class="sec-detail">UT Austin, Texas A&M, Texas State, Trinity</div></div></div>
-      <div class="sec-card"><div class="sec-ico">🏛️</div><div><div class="sec-name">Government</div><div class="sec-detail">Bexar County Courthouse, SA Airport, Alamodome</div></div></div>
-      <div class="sec-card"><div class="sec-ico">⚔️</div><div><div class="sec-name">Military</div><div class="sec-detail">Ft. Sam, LAFB, Camp Bullis, Port San Antonio</div></div></div>
-      <div class="sec-card"><div class="sec-ico">🏨</div><div><div class="sec-name">Hospitality</div><div class="sec-detail">SeaWorld, Fiesta Texas, Dough Pizzeria</div></div></div>
-      <div class="sec-card"><div class="sec-ico">🏗️</div><div><div class="sec-name">Industrial</div><div class="sec-detail">HEB Warehouse, Valero, PricewaterhouseCoopers</div></div></div>
-      <div class="sec-card"><div class="sec-ico">⛪</div><div><div class="sec-name">Religious</div><div class="sec-detail">Woodland Baptist, Landa Library</div></div></div>
-      <div class="sec-card"><div class="sec-ico">🏠</div><div><div class="sec-name">Multifamily</div><div class="sec-detail">Madonna Apartments, Signature at La Cantera</div></div></div>
-    </div>
-  </div>
-</section>
-
-<!-- QUOTE -->
-<section class="quote-bg" id="quote">
-  <div class="quote-inner">
-    <div>
-      <div class="section-eyebrow">Contact us</div>
-      <h2 class="sh">Let's start your <em>project</em></h2>
-      <p class="section-lead">Fill out the form for a free, no-obligation estimate. We respond within one business day.</p>
-      <div class="q-contacts">
-        <div class="q-row"><strong>Phone</strong><a href="tel:2102274200" style="font-size:18px;font-weight:600;color:var(--navy-dark)">(210) 227-4200</a></div>
-        <div class="q-row"><strong>Office Mgr</strong><a href="mailto:Melissa@aglpainting.com">Melissa@aglpainting.com</a></div>
-        <div class="q-row"><strong>Estimating</strong><a href="mailto:estimating@aglpainting.com">estimating@aglpainting.com</a></div>
-        <div class="q-row"><strong>Address</strong><span style="font-size:14px;color:var(--gray-500)">5515 Fredericksburg Rd, San Antonio TX 78229</span></div>
-      </div>
-    </div>
-    <div class="form-box">
-      <div class="form-title-block">Request a free estimate</div>
-      <div class="fr"><div class="fl"><label>First Name</label><input type="text" placeholder="John"></div><div class="fl"><label>Last Name</label><input type="text" placeholder="Smith"></div></div>
-      <div class="fl"><label>Company</label><input type="text" placeholder="Acme Corp"></div>
-      <div class="fr"><div class="fl"><label>Phone</label><input type="tel" placeholder="(210) 000-0000"></div><div class="fl"><label>Email</label><input type="email" placeholder="you@company.com"></div></div>
-      <div class="fl"><label>Service</label><select><option value="">Select a service...</option><option>Interior Painting</option><option>Exterior Painting</option><option>Epoxy Floor Coating</option><option>Roof Coating System</option><option>Pressure Washing / Sandblasting</option><option>Custom Texture / Faux Finish</option><option>Drywall & Framing</option><option>Other / Multiple</option></select></div>
-      <div class="fl"><label>Project Details</label><textarea placeholder="Describe your project, facility type, and timeline..."></textarea></div>
-      <button class="fsub" id="fsub1">Submit Request →</button>
-    </div>
-  </div>
-</section>
-
+<!-- FOOTER -->
 <footer>
   <div class="foot-inner">
-    <div class="foot-top">
-      <div>
-        <div class="foot-brand-name">AGL<span>.</span> Painting LLC</div>
-        <p class="foot-tagline">San Antonio's trusted commercial and industrial painting contractor — delivering excellence for over 20 years.</p>
-        <p class="foot-addr">5515 Fredericksburg Rd · San Antonio, TX 78229</p>
-      </div>
-      <div><div class="foot-col-ttl">Services</div><ul class="foot-links"><li><a href="#services">Interior & Exterior</a></li><li><a href="#services">Epoxy Floors</a></li><li><a href="#services">Roof Coatings</a></li><li><a href="#services">Sandblasting</a></li><li><a href="#services">Custom Texture</a></li><li><a href="#services">Drywall & Framing</a></li></ul></div>
-      <div><div class="foot-col-ttl">Markets</div><ul class="foot-links"><li><a href="#sectors">Commercial</a></li><li><a href="#sectors">Healthcare</a></li><li><a href="#sectors">Education</a></li><li><a href="#sectors">Government</a></li><li><a href="#sectors">Military</a></li><li><a href="#sectors">Industrial</a></li></ul></div>
-      <div><div class="foot-col-ttl">Contact</div><div class="fci"><div class="fci-l">Phone</div><div class="fci-v"><a href="tel:2102274200">(210) 227-4200</a></div></div><div class="fci"><div class="fci-l">Office Manager</div><div class="fci-v"><a href="mailto:Melissa@aglpainting.com">Melissa@aglpainting.com</a></div></div><div class="fci"><div class="fci-l">Estimating</div><div class="fci-v"><a href="mailto:estimating@aglpainting.com">estimating@aglpainting.com</a></div></div></div>
-    </div>
+    <ul class="foot-links">
+      <li><a href="#home">Home Page</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#jobs">Completed Jobs</a></li>
+      <li><a href="#team">Our Team</a></li>
+    </ul>
     <hr class="fd">
-    <div class="foot-bottom"><span class="foot-copy">© 2025 AGL Painting LLC. All rights reserved.</span><span class="foot-copy">Licensed · Insured · San Antonio, TX</span></div>
+    <p class="foot-copy">© 2026 AGL Painting LLC. All rights reserved. &nbsp;·&nbsp; Licensed &nbsp;·&nbsp; Insured &nbsp;·&nbsp; San Antonio, TX 78229</p>
   </div>
 </footer>
 
-<script>
-const clients=['HEB','7-Eleven','SeaWorld','Fiesta Texas','Alamodome','SA Convention Center','Bexar County Courthouse','SA Airport','UT Austin','Texas A&M','Texas State','Trinity University','Fort Sam Houston','LAFB','Camp Bullis','Valero','PricewaterhouseCoopers','Riverside ER','MedPost Urgent Care','La Cantera','Vaughn Construction','JE Dunn','Dennis Group','Torch of Friendship','Madonna Apartments'];
-const t=document.getElementById('ticker1');
-[...clients,...clients].forEach(c=>{const d=document.createElement('div');d.className='c-chip';d.textContent=c;t.appendChild(d)});
-document.getElementById('fsub1').addEventListener('click',function(){this.textContent='Request Sent ✓';this.style.background='var(--teal-dark)';this.disabled=true});
-</script>
 </body>
 </html>
