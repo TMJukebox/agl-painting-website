@@ -117,19 +117,35 @@ nav a:hover{color:var(--teal)}
   color:white;font-size:12px;font-weight:700;
   letter-spacing:3px;text-transform:uppercase;
 }
-.photo-grid{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:6px;margin-top:44px;
+.carousel-wrap{position:relative;margin-top:44px}
+.carousel{
+  display:flex;gap:10px;
+  overflow-x:auto;scroll-snap-type:x mandatory;
+  scroll-behavior:smooth;-webkit-overflow-scrolling:touch;
+  padding-bottom:8px;
 }
-.photo-grid img{
-  width:100%;aspect-ratio:4/3;
-  object-fit:cover;border-radius:4px;
-  transition:opacity 0.2s;cursor:pointer;
+.carousel::-webkit-scrollbar{height:4px}
+.carousel::-webkit-scrollbar-track{background:rgba(0,0,0,0.05);border-radius:2px}
+.carousel::-webkit-scrollbar-thumb{background:var(--teal);border-radius:2px}
+.carousel img{
+  flex:0 0 auto;width:480px;height:320px;
+  object-fit:cover;border-radius:6px;
+  scroll-snap-align:start;cursor:pointer;
+  transition:transform 0.2s,opacity 0.2s;
 }
-.photo-grid img:hover{opacity:0.88}
-.photo-grid .span2{grid-column:span 2;aspect-ratio:16/9}
-.photo-grid .tall{grid-row:span 2;aspect-ratio:auto}
+.carousel img:hover{transform:scale(1.01);opacity:0.92}
+.carousel-btn{
+  position:absolute;top:50%;transform:translateY(-50%);
+  background:var(--navy);color:#fff;border:none;
+  width:44px;height:44px;border-radius:50%;
+  font-size:20px;cursor:pointer;z-index:10;
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 4px 12px rgba(0,0,0,0.25);
+  transition:background 0.2s;
+}
+.carousel-btn:hover{background:var(--teal)}
+.carousel-btn.prev{left:-22px}
+.carousel-btn.next{right:-22px}
 
 /* OUR TEAM */
 #team{padding:88px 0 0}
@@ -189,8 +205,8 @@ hr.fd{border:none;border-top:1px solid rgba(255,255,255,0.08);margin-bottom:20px
   .home-left,.services-content{padding:100px 32px 60px}
   #jobs{padding:64px 32px}
   .jobs-grid{grid-template-columns:1fr}
-  .photo-grid{grid-template-columns:repeat(2,1fr)}
-  .photo-grid .span2,.photo-grid .tall{grid-column:span 1;grid-row:span 1;aspect-ratio:4/3}
+  .carousel img{width:300px;height:200px}
+  .carousel-btn{width:36px;height:36px;font-size:16px}
   .team-cards{grid-template-columns:1fr}
   .team-member{grid-template-columns:1fr;min-height:auto}
   .team-member:nth-child(even) .member-img,.team-member:nth-child(even) .member-info{order:unset}
@@ -352,18 +368,40 @@ hr.fd{border:none;border-top:1px solid rgba(255,255,255,0.08);margin-bottom:20px
 
     <div class="cert-bar">Certified: HUB &nbsp;·&nbsp; SBE &nbsp;·&nbsp; MBE &nbsp;·&nbsp; HABE &nbsp;·&nbsp; ESBE</div>
 
-    <div class="photo-grid">
-      <img src="Images/Chama.jpg" alt="Chama Gaucha" class="span2 tall">
-      <img src="Images/20241007_135740.jpg" alt="AGL Project">
-      <img src="Images/20241010_092550.jpg" alt="AGL Project">
-      <img src="Images/HEB 2.jpg" alt="HEB Project" class="span2">
-      <img src="Images/20241011_224920.jpg" alt="AGL Project">
-      <img src="Images/20241023_115720.jpg" alt="AGL Project">
-      <img src="Images/agl-projects-5.jpg" alt="AGL Project">
-      <img src="Images/20250224_095144.jpg" alt="AGL Project">
-      <img src="Images/20241012_002633.jpg" alt="AGL Project">
-      <img src="Images/20241023_115728.jpg" alt="AGL Project">
+    <div class="carousel-wrap">
+      <button class="carousel-btn prev" onclick="scrollCarousel(-1)">&#8592;</button>
+      <div class="carousel" id="photoCarousel">
+        <img src="Images/Chama.jpg" alt="Chama Gaucha">
+        <img src="Images/20241007_135740.jpg" alt="AGL Project">
+        <img src="Images/20241010_092550.jpg" alt="AGL Project">
+        <img src="Images/HEB 2.jpg" alt="HEB Project">
+        <img src="Images/20241011_224920.jpg" alt="AGL Project">
+        <img src="Images/20241023_115720.jpg" alt="AGL Project">
+        <img src="Images/agl-projects-5.jpg" alt="AGL Project">
+        <img src="Images/20250224_095144.jpg" alt="AGL Project">
+        <img src="Images/20241012_002633.jpg" alt="AGL Project">
+        <img src="Images/20241023_115728.jpg" alt="AGL Project">
+        <img src="Images/20250224_095149.jpg" alt="AGL Project">
+        <img src="Images/20250224_095153.jpg" alt="AGL Project">
+        <img src="Images/heb 7.jpg" alt="HEB Project">
+        <img src="Images/agl-projects-2.jpg" alt="AGL Project">
+      </div>
+      <button class="carousel-btn next" onclick="scrollCarousel(1)">&#8594;</button>
     </div>
+
+<script>
+function scrollCarousel(dir){
+  const c=document.getElementById('photoCarousel');
+  c.scrollBy({left:dir*500,behavior:'smooth'});
+}
+// Auto-scroll every 4 seconds
+setInterval(()=>{
+  const c=document.getElementById('photoCarousel');
+  const maxScroll=c.scrollWidth-c.clientWidth;
+  if(c.scrollLeft>=maxScroll) c.scrollTo({left:0,behavior:'smooth'});
+  else c.scrollBy({left:500,behavior:'smooth'});
+},4000);
+</script>
   </div>
 </section>
 
