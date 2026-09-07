@@ -1,0 +1,575 @@
+<!doctype html>
+<title>Sam Chapa Electrical</title>
+<meta charset="utf-8">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800;900&family=Archivo:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Space+Mono:wght@400;700&display=swap');
+
+  :root{
+    --ink:#10192b;
+    --ink-soft:#374357;
+    --paper:#f5f1e9;
+    --panel:#ffffff;
+    --line:#ddd4c3;
+    --copper:#b85c2e;
+    --copper-deep:#8f4522;
+    --volt:#2f7fb8;
+    --amber:#dd9a34;
+    --muted:#7d7462;
+    --shadow: 0 1px 0 rgba(16,25,43,0.06);
+  }
+
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --ink:#f2ede2;
+      --ink-soft:#c9c0ac;
+      --paper:#141a26;
+      --panel:#1b2333;
+      --line:#2c3648;
+      --copper:#e08a52;
+      --copper-deep:#f0a06a;
+      --volt:#6fb3e0;
+      --amber:#e8b563;
+      --muted:#8b93a6;
+      --shadow: 0 1px 0 rgba(0,0,0,0.3);
+    }
+  }
+  :root[data-theme="dark"]{
+    --ink:#f2ede2;
+    --ink-soft:#c9c0ac;
+    --paper:#141a26;
+    --panel:#1b2333;
+    --line:#2c3648;
+    --copper:#e08a52;
+    --copper-deep:#f0a06a;
+    --volt:#6fb3e0;
+    --amber:#e8b563;
+    --muted:#8b93a6;
+    --shadow: 0 1px 0 rgba(0,0,0,0.3);
+  }
+
+  *{box-sizing:border-box;}
+  html{color-scheme:light dark;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Archivo',system-ui,-apple-system,sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{
+    font-family:'Big Shoulders Display',system-ui,sans-serif;
+    text-transform:uppercase;
+    line-height:0.92;
+    text-wrap:balance;
+    margin:0;
+    letter-spacing:0.01em;
+  }
+  .mono{
+    font-family:'Space Mono',ui-monospace,monospace;
+  }
+  .label{
+    font-family:'Space Mono',ui-monospace,monospace;
+    font-size:12px;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--muted);
+  }
+  a{color:inherit;}
+  img{max-width:100%;}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 32px;}
+  @media (max-width:720px){.wrap{padding:0 20px;}}
+
+  /* ---------- Header ---------- */
+  header{
+    position:sticky;top:0;z-index:40;
+    background:var(--paper);
+    border-bottom:1px solid var(--line);
+  }
+  .nav{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:16px 0;gap:24px;
+  }
+  .brand{display:flex;align-items:center;gap:12px;}
+  .brand-mark{
+    width:40px;height:40px;border-radius:6px;
+    background:var(--ink);
+    display:flex;align-items:center;justify-content:center;
+    flex:none;
+  }
+  .brand-mark svg{width:22px;height:22px;}
+  .brand-name{font-family:'Big Shoulders Display';font-weight:800;font-size:20px;text-transform:uppercase;letter-spacing:0.02em;}
+  .brand-sub{font-size:11px;color:var(--muted);letter-spacing:0.08em;text-transform:uppercase;margin-top:-2px;}
+  nav.links{display:flex;gap:28px;font-size:14px;font-weight:600;}
+  nav.links a{text-decoration:none;color:var(--ink-soft);border-bottom:2px solid transparent;padding-bottom:2px;}
+  nav.links a:hover{color:var(--copper);border-color:var(--copper);}
+  .navcta{display:flex;align-items:center;gap:18px;}
+  .phone-pill{
+    display:flex;align-items:center;gap:8px;
+    font-family:'Space Mono';font-weight:700;font-size:15px;
+    color:var(--ink);text-decoration:none;
+  }
+  .dot-live{width:8px;height:8px;border-radius:50%;background:var(--volt);box-shadow:0 0 0 3px color-mix(in srgb, var(--volt) 25%, transparent);flex:none;}
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;
+    background:var(--copper);color:#fff8f0;
+    font-weight:700;font-size:14px;
+    padding:12px 20px;border-radius:4px;
+    text-decoration:none;border:1px solid var(--copper-deep);
+    white-space:nowrap;
+  }
+  @media (max-width:860px){ nav.links{display:none;} }
+
+  /* ---------- Hero ---------- */
+  .hero{border-bottom:1px solid var(--line);}
+  .hero-grid{
+    display:grid;grid-template-columns:1.1fr 0.9fr;
+    align-items:stretch;min-height:0;
+  }
+  @media (max-width:900px){ .hero-grid{grid-template-columns:1fr;} }
+  .hero-copy{padding:76px 48px 76px 0;display:flex;flex-direction:column;gap:26px;justify-content:center;}
+  @media (max-width:900px){ .hero-copy{padding:48px 0 32px;} }
+  .eyebrow{display:flex;align-items:center;gap:10px;}
+  .eyebrow .label{color:var(--copper);}
+  h1.hero-title{font-size:clamp(40px,6vw,74px);font-weight:900;}
+  h1.hero-title em{font-style:normal;color:var(--copper);}
+  .hero-desc{font-size:18px;line-height:1.6;color:var(--ink-soft);max-width:46ch;}
+  .hero-actions{display:flex;gap:14px;flex-wrap:wrap;align-items:center;}
+  .btn-ghost{
+    display:inline-flex;align-items:center;gap:8px;
+    padding:12px 20px;border-radius:4px;border:1.5px solid var(--ink);
+    font-weight:700;font-size:14px;text-decoration:none;color:var(--ink);
+  }
+  .trust-row{display:flex;gap:22px;flex-wrap:wrap;padding-top:8px;}
+  .trust-item{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--ink-soft);}
+  .trust-item svg{width:16px;height:16px;flex:none;color:var(--copper);}
+
+  /* breaker panel illustration */
+  .hero-art{
+    position:relative;background:var(--ink);
+    display:flex;align-items:center;justify-content:center;padding:40px;
+  }
+  .panel-plate{
+    background:var(--panel);border:1px solid var(--line);border-radius:10px;
+    padding:22px;width:100%;max-width:380px;
+    box-shadow:0 20px 50px -20px rgba(0,0,0,0.45);
+  }
+  .panel-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:16px;}
+  .panel-head .label{color:var(--muted);}
+  .panel-head .mono{font-size:12px;color:var(--ink-soft);}
+  .breaker-row{
+    display:grid;grid-template-columns:22px 1fr auto;
+    align-items:center;gap:12px;
+    padding:9px 4px;border-bottom:1px dashed var(--line);
+  }
+  .breaker-row:last-child{border-bottom:none;}
+  .switch{
+    width:16px;height:26px;border-radius:3px;background:var(--line);position:relative;flex:none;
+  }
+  .switch::after{
+    content:"";position:absolute;left:2px;right:2px;top:2px;height:10px;border-radius:2px;background:var(--muted);
+  }
+  .switch.on{background:color-mix(in srgb, var(--volt) 22%, var(--panel));}
+  .switch.on::after{background:var(--volt);top:auto;bottom:2px;}
+  .breaker-name{font-size:13px;font-weight:600;color:var(--ink);}
+  .breaker-amp{font-family:'Space Mono';font-size:12px;color:var(--muted);}
+
+  /* ---------- Nameplate stat bar ---------- */
+  .nameplate{
+    background:var(--ink);color:var(--paper);
+    border-bottom:4px solid var(--copper);
+  }
+  .nameplate .wrap{
+    display:grid;grid-template-columns:repeat(4,1fr);
+    gap:0;
+  }
+  @media (max-width:760px){ .nameplate .wrap{grid-template-columns:repeat(2,1fr);} }
+  .plate-cell{
+    padding:26px 24px;border-left:1px solid rgba(245,241,233,0.14);
+    display:flex;flex-direction:column;gap:4px;
+  }
+  .plate-cell:first-child{border-left:none;}
+  .plate-num{font-family:'Big Shoulders Display';font-weight:800;font-size:34px;color:#fff;}
+  .plate-num .unit{font-size:16px;color:var(--copper-deep);margin-left:2px;}
+  .plate-label{font-family:'Space Mono';font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:#b9b2a3;}
+
+  /* ---------- Sections generic ---------- */
+  section{padding:88px 0;}
+  .section-head{max-width:640px;margin-bottom:48px;}
+  .section-head .label{margin-bottom:10px;display:block;}
+  .section-head h2{font-size:clamp(30px,4vw,46px);}
+
+  /* ---------- Services: panel schedule ---------- */
+  .panels{display:grid;grid-template-columns:1.3fr 1.3fr 1fr;gap:24px;align-items:start;}
+  @media (max-width:1000px){.panels{grid-template-columns:1fr;}}
+  .service-panel{
+    background:var(--panel);border:1px solid var(--line);border-radius:10px;
+    overflow:hidden;display:flex;flex-direction:column;
+  }
+  .sp-head{padding:22px 22px 14px;border-bottom:1px solid var(--line);}
+  .sp-tag{
+    display:inline-block;font-family:'Space Mono';font-size:11px;letter-spacing:0.08em;
+    text-transform:uppercase;color:var(--copper);border:1px solid var(--copper);
+    border-radius:999px;padding:3px 10px;margin-bottom:12px;
+  }
+  .sp-head h3{font-size:24px;}
+  .sp-head .sp-lede{
+    font-family:'Space Mono';font-size:12px;color:var(--muted);
+    text-transform:uppercase;letter-spacing:0.06em;margin-top:6px;
+  }
+  .sp-list{list-style:none;margin:0;padding:6px 22px 22px;display:flex;flex-direction:column;}
+  .sp-list li{
+    display:grid;grid-template-columns:1fr auto;gap:10px;
+    padding:11px 0;border-bottom:1px dashed var(--line);font-size:14.5px;
+  }
+  .sp-list li:last-child{border-bottom:none;}
+  .sp-list .circuit{font-family:'Space Mono';font-size:11px;color:var(--muted);}
+  .sp-list.two-col{
+    display:grid;grid-template-columns:1fr 1fr;column-gap:22px;row-gap:0;
+  }
+  .sp-list.two-col li{grid-template-columns:1fr;padding:9px 0;font-size:13.5px;}
+
+  /* ---------- Process ---------- */
+  .process{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;background:var(--line);border:1px solid var(--line);border-radius:10px;overflow:hidden;}
+  @media (max-width:820px){.process{grid-template-columns:1fr;}}
+  .proc-step{background:var(--panel);padding:30px 26px;display:flex;flex-direction:column;gap:12px;}
+  .proc-num{font-family:'Big Shoulders Display';font-weight:900;font-size:46px;color:var(--line);}
+  .proc-step h3{font-size:19px;text-transform:none;font-family:'Archivo';font-weight:700;}
+  .proc-step p{margin:0;font-size:14px;color:var(--ink-soft);line-height:1.55;}
+
+  /* ---------- Testimonial ticker ---------- */
+  .tix{background:var(--ink);color:var(--paper);padding:56px 0;overflow:hidden;}
+  .tix .wrap{overflow:hidden;}
+  .tix-track{display:flex;gap:48px;width:max-content;animation:scroll 34s linear infinite;}
+  @media (prefers-reduced-motion: reduce){.tix-track{animation:none;}}
+  .tix-item{display:flex;align-items:center;gap:16px;white-space:nowrap;font-size:16px;}
+  .tix-item .stars{color:var(--copper-deep);letter-spacing:2px;font-size:14px;}
+  .tix-item .who{font-family:'Space Mono';font-size:12px;color:#a9a190;}
+  @keyframes scroll{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+
+  /* ---------- Service area ---------- */
+  .area-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;}
+  @media (max-width:860px){.area-grid{grid-template-columns:1fr;}}
+  .area-list{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:10px 20px;}
+  .area-list li{font-size:15px;padding:8px 0;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:8px;}
+  .area-list li::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--volt);flex:none;}
+  .map-card{
+    background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:14px;
+    display:flex;flex-direction:column;gap:12px;
+  }
+  .map-frame{
+    border-radius:8px;position:relative;overflow:hidden;border:1px solid var(--line);
+    aspect-ratio:4/3;
+    background:var(--line);
+  }
+  .map-frame iframe{
+    position:absolute;inset:0;width:100%;height:100%;border:0;display:block;
+  }
+  .map-open{
+    position:absolute;right:12px;bottom:12px;
+    display:inline-flex;align-items:center;gap:6px;
+    background:var(--panel);border:1px solid var(--line);border-radius:6px;
+    padding:8px 12px;font-size:12.5px;font-weight:700;text-decoration:none;color:var(--ink);
+    box-shadow:0 6px 16px -8px rgba(0,0,0,0.35);
+  }
+  .map-open svg{width:13px;height:13px;color:var(--copper);}
+
+  /* ---------- CTA + footer ---------- */
+  .cta{background:var(--copper);color:#fff8f0;}
+  .cta .wrap{display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap;padding:56px 32px;}
+  .cta h2{font-size:clamp(28px,4vw,42px);color:#fff8f0;}
+  .cta .btn-ghost{border-color:#fff8f0;color:#fff8f0;}
+
+  footer{background:var(--ink);color:#a9a190;padding:56px 0 28px;}
+  .foot-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px;padding-bottom:36px;border-bottom:1px solid rgba(245,241,233,0.14);}
+  @media (max-width:760px){.foot-grid{grid-template-columns:1fr;}}
+  .foot-grid h4{color:#fff8f0;font-family:'Space Mono';font-size:12px;letter-spacing:0.1em;text-transform:uppercase;margin:0 0 14px;}
+  .foot-grid p, .foot-grid a{font-size:14px;line-height:1.7;color:#a9a190;text-decoration:none;}
+  .foot-grid a:hover{color:#fff8f0;}
+  .license-stamp{
+    display:inline-flex;align-items:center;gap:10px;margin-top:16px;
+    border:1px solid rgba(245,241,233,0.3);border-radius:6px;padding:8px 14px;
+    font-family:'Space Mono';font-size:12px;color:#fff8f0;
+  }
+  .bottom-bar{display:flex;justify-content:space-between;padding-top:24px;font-size:12px;flex-wrap:wrap;gap:8px;}
+</style>
+
+<header>
+  <div class="wrap nav">
+    <div class="brand">
+      <div class="brand-mark">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#f5f1e9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 L4 14 h6 l-1 8 9-12 h-6 z"/></svg>
+      </div>
+      <div>
+        <div class="brand-name">SCEC</div>
+        <div class="brand-sub">Sam Chapa Electrical</div>
+      </div>
+    </div>
+    <nav class="links">
+      <a href="#services">Services</a>
+      <a href="#process">How It Works</a>
+      <a href="#area">Service Area</a>
+      <a href="#reviews">Reviews</a>
+    </nav>
+    <div class="navcta">
+      <a class="phone-pill" href="tel:8303391803"><span class="dot-live"></span>(830) 339-1803</a>
+      <a class="btn" href="#quote">Get a Quote</a>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <div class="eyebrow">
+        <span class="label">Bulverde &amp; San Antonio, TX</span>
+      </div>
+      <h1 class="hero-title">Licensed electricians<br>your <em>panel</em> can trust.</h1>
+      <p class="hero-desc">Family-owned since day one. Ten licensed electricians, a master electrician with 37 years in the trade, and a crew that shows up, explains the work, and does it right &mdash; residential, commercial, and industrial.</p>
+      <div class="hero-actions">
+        <a class="btn" href="#quote">Request a Quote</a>
+        <a class="btn-ghost" href="tel:8303391803">24/7 Emergency Line</a>
+      </div>
+      <div class="trust-row">
+        <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg> TECL License #34615</div>
+        <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg> Family owned &amp; operated</div>
+        <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg> Fully insured crews</div>
+      </div>
+    </div>
+    <div class="hero-art">
+      <div class="panel-plate">
+        <div class="panel-head">
+          <span class="label">Service Panel</span>
+          <span class="mono">SCEC-01</span>
+        </div>
+        <div class="breaker-row"><span class="switch on"></span><span class="breaker-name">Residential Wiring</span><span class="breaker-amp">200A</span></div>
+        <div class="breaker-row"><span class="switch on"></span><span class="breaker-name">Commercial Buildout</span><span class="breaker-amp">400A</span></div>
+        <div class="breaker-row"><span class="switch on"></span><span class="breaker-name">Industrial Controls</span><span class="breaker-amp">3-PH</span></div>
+        <div class="breaker-row"><span class="switch"></span><span class="breaker-name">Home Theater &amp; Sound</span><span class="breaker-amp">20A</span></div>
+        <div class="breaker-row"><span class="switch on"></span><span class="breaker-name">Emergency Dispatch</span><span class="breaker-amp">24/7</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="nameplate">
+  <div class="wrap">
+    <div class="plate-cell">
+      <div class="plate-num">37<span class="unit">YRS</span></div>
+      <div class="plate-label">Master Electrician Experience</div>
+    </div>
+    <div class="plate-cell">
+      <div class="plate-num">10</div>
+      <div class="plate-label">Licensed Electricians On Staff</div>
+    </div>
+    <div class="plate-cell">
+      <div class="plate-num">24/7</div>
+      <div class="plate-label">Emergency Service</div>
+    </div>
+    <div class="plate-cell">
+      <div class="plate-num mono" style="font-family:'Space Mono';font-size:22px;">TECL 34615</div>
+      <div class="plate-label">Texas License Number</div>
+    </div>
+  </div>
+</div>
+
+<section id="services">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="label">What We Wire</span>
+      <h2>Three panels, one crew.</h2>
+    </div>
+    <div class="panels">
+      <div class="service-panel">
+        <div class="sp-head">
+          <span class="sp-tag">Residential</span>
+          <h3>For the home</h3>
+          <div class="sp-lede">Electrical safety inspections</div>
+        </div>
+        <ul class="sp-list two-col">
+          <li>House rewiring &amp; wiring repairs</li>
+          <li>Outlet wiring repair, replacement &amp; installation</li>
+          <li>Circuit breaker / fuse box repair</li>
+          <li>Electrical panel replacement &amp; repair</li>
+          <li>Electrical &amp; short circuit repair</li>
+          <li>Electrical troubleshooting &amp; repair</li>
+          <li>GFCI outlets</li>
+          <li>Surge protectors</li>
+          <li>EV charging stations</li>
+          <li>Smart home &amp; IoT installation</li>
+          <li>Lighting systems &amp; controls</li>
+          <li>Ceiling fan installation</li>
+          <li>Landscape lighting</li>
+          <li>Motion sensors</li>
+          <li>Video surveillance</li>
+        </ul>
+      </div>
+      <div class="service-panel">
+        <div class="sp-head">
+          <span class="sp-tag">Commercial</span>
+          <h3>For the business</h3>
+          <div class="sp-lede">Amp service &amp; upgrade</div>
+        </div>
+        <ul class="sp-list two-col">
+          <li>100&ndash;2000 amp service installation</li>
+          <li>Circuit breakers</li>
+          <li>Control panels</li>
+          <li>3-phase service</li>
+          <li>Transformer service</li>
+          <li>Motor replacement</li>
+          <li>Motor controls</li>
+          <li>Phase protection</li>
+          <li>Lighting update analysis / service</li>
+          <li>Indoor lighting</li>
+          <li>Recessed lighting</li>
+          <li>Electrical service</li>
+          <li>Underground wiring</li>
+          <li>Maintenance &amp; repair</li>
+          <li>Conduit runs</li>
+          <li>Security camera installation</li>
+          <li>Security lighting</li>
+          <li>Emergency power &amp; lighting</li>
+          <li>Back up power (UPS)</li>
+          <li>Voice, data &amp; fiber wiring</li>
+          <li>Voice &amp; data systems</li>
+          <li>Computer cabling</li>
+          <li>Computer networking</li>
+          <li>Design, build &amp; engineering services</li>
+          <li>Outdoor lighting</li>
+          <li>Generators &amp; auxiliary power service</li>
+          <li>Code violation repairs</li>
+        </ul>
+      </div>
+      <div class="service-panel">
+        <div class="sp-head">
+          <span class="sp-tag">Industrial</span>
+          <h3>For the plant</h3>
+        </div>
+        <ul class="sp-list">
+          <li>WWTP / WTP electrical systems <span class="circuit">CKT-09</span></li>
+          <li>Control panel builds <span class="circuit">CKT-10</span></li>
+          <li>Transformer install &amp; service <span class="circuit">CKT-11</span></li>
+          <li>Preventive maintenance <span class="circuit">CKT-12</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="process" style="background:var(--panel);border-top:1px solid var(--line);border-bottom:1px solid var(--line);">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="label">How A Call Runs</span>
+      <h2>From ring to wrap-up.</h2>
+    </div>
+    <div class="process">
+      <div class="proc-step">
+        <span class="proc-num">01</span>
+        <h3>You call, we answer</h3>
+        <p>Day or night &mdash; a real person picks up and gets a tech routed to you, emergency or not.</p>
+      </div>
+      <div class="proc-step">
+        <span class="proc-num">02</span>
+        <h3>On-site diagnosis</h3>
+        <p>A licensed electrician traces the problem or scopes the job before anything gets touched.</p>
+      </div>
+      <div class="proc-step">
+        <span class="proc-num">03</span>
+        <h3>Upfront quote</h3>
+        <p>You get a clear price before work starts &mdash; no surprises when the invoice shows up.</p>
+      </div>
+      <div class="proc-step">
+        <span class="proc-num">04</span>
+        <h3>Work, inspected</h3>
+        <p>Code-compliant work, cleaned up after, and checked before the crew calls it done.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="reviews" style="padding:0;">
+  <div class="tix">
+    <div class="wrap">
+      <div class="tix-track">
+        <div class="tix-item"><span class="stars">★★★★★</span> "They are the best!! Sam hooked up our outdoor kitchen, professional, kind and reliable!!" <span class="who">— Lauren M.</span></div>
+        <div class="tix-item"><span class="stars">★★★★★</span> "Genuine, honest service every time we've called them out." <span class="who">— San Antonio homeowner</span></div>
+        <div class="tix-item"><span class="stars">★★★★★</span> "Fast response on an emergency panel issue &mdash; showed up same night." <span class="who">— Bulverde, TX</span></div>
+        <div class="tix-item"><span class="stars">★★★★★</span> "They are the best!! Sam hooked up our outdoor kitchen, professional, kind and reliable!!" <span class="who">— Lauren M.</span></div>
+        <div class="tix-item"><span class="stars">★★★★★</span> "Genuine, honest service every time we've called them out." <span class="who">— San Antonio homeowner</span></div>
+        <div class="tix-item"><span class="stars">★★★★★</span> "Fast response on an emergency panel issue &mdash; showed up same night." <span class="who">— Bulverde, TX</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="area">
+  <div class="wrap area-grid">
+    <div>
+      <div class="section-head" style="margin-bottom:24px;">
+        <span class="label">Service Area</span>
+        <h2>Hill Country to the city.</h2>
+      </div>
+      <ul class="area-list">
+        <li>Bulverde</li>
+        <li>San Antonio</li>
+        <li>New Braunfels</li>
+        <li>Spring Branch</li>
+        <li>Fair Oaks Ranch</li>
+        <li>Boerne</li>
+      </ul>
+    </div>
+    <div class="map-card">
+      <div class="map-frame">
+        <iframe
+          title="Map showing Sam Chapa Electrical at 28786 US HWY 281 N, Bulverde TX"
+          src="https://www.google.com/maps?q=28786%20US%20HWY%20281%20N%2C%20Bulverde%20TX&output=embed"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          allowfullscreen></iframe>
+        <a class="map-open" href="https://www.google.com/maps/search/?api=1&query=28786+US+HWY+281+N%2C+Bulverde+TX" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><path d="M15 3h6v6"/><path d="M10 14 21 3"/></svg>
+          Open in Google Maps
+        </a>
+      </div>
+      <div style="display:flex;justify-content:space-between;padding:0 6px;">
+        <span class="label">28786 US HWY 281 N, Bulverde TX</span>
+        <span class="mono" style="font-size:12px;color:var(--muted);">STE 102</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta" id="quote" style="padding:0;">
+  <div class="wrap">
+    <h2>Wire it right the first time.</h2>
+    <div style="display:flex;gap:14px;flex-wrap:wrap;">
+      <a class="btn-ghost" href="tel:8303391803">Call (830) 339-1803</a>
+      <a class="btn" style="background:var(--ink);border-color:var(--ink);" href="#">Request a Free Quote</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <h4>Sam Chapa Electrical Contractors</h4>
+        <p>Family-owned electrical contractors serving San Antonio and the Texas Hill Country since Sam Chapa first got licensed. Residential, commercial, and industrial work &mdash; done to code, every time.</p>
+        <div class="license-stamp">TECL #34615 &nbsp;·&nbsp; Fully Insured</div>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <p><a href="tel:8303391803">(830) 339-1803</a></p>
+        <p>28786 US HWY 281 N<br>STE 102, Bulverde, TX 78163</p>
+      </div>
+      <div>
+        <h4>Hours</h4>
+        <p>Mon&ndash;Fri: 7:00 AM &ndash; 6:00 PM</p>
+        <p>Emergency Service: 24/7</p>
+      </div>
+    </div>
+    <div class="bottom-bar">
+      <span>© 2026 Sam Chapa Electrical Contractors. All rights reserved.</span>
+      <span>Mockup design &middot; not the live site</span>
+    </div>
+  </div>
+</footer>
